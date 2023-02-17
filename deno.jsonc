@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "dev": "deno run --unstable --allow-net --allow-read=home.html main.ts"
+  },
+  "lint": {
+    "rules": {
+      "exclude": ["prefer-const"]
+    }
+  }
+}

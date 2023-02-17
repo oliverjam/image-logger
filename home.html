@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Image counter</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: ui-monospace, Consolas, monospace;
+        max-inline-size: 44rem;
+        margin-block: 0;
+        margin-inline: auto;
+        padding-block: 4rem;
+        padding-inline: 1.5rem;
+      }
+
+      h1 {
+        margin-block-start: 0;
+      }
+
+      code {
+        padding-block: 0.15rem;
+        padding-inline: 0.35rem;
+        background-color: hsl(200deg 10% 96%);
+        font: inherit;
+      }
+
+      ol {
+        list-style-position: inside;
+        padding-inline-start: 0;
+      }
+
+      pre {
+        padding-block: 1.5rem;
+        padding-inline: 1.5rem;
+        background-color: hsl(200deg 10% 96%);
+        font: inherit;
+        overflow: auto;
+      }
+
+      pre b {
+        color: hsl(120deg 90% 30%);
+      }
+
+      img:not([class]) {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: ui-monospace, Consolas, monospace;
+        font-size: 0.875rem;
+        text-align: left;
+        border: 1px solid hsl(200deg 10% 40%);
+      }
+
+      th,
+      td {
+        padding-block: 0.25rem;
+        padding-inline: 0.75rem;
+      }
+
+      th {
+        background-color: hsl(200deg 10% 40%);
+        color: hsl(200deg 10% 98%);
+      }
+
+      tr:nth-child(even) td {
+        background-color: hsl(200deg 10% 96%);
+      }
+
+      td:first-child {
+        font-weight: bold;
+      }
+
+      .hits {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        border-radius: 6px;
+        background-color: hsla(0deg 0% 100% / 0.5);
+        backdrop-filter: blur(3px);
+      }
+
+      .counter {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Image counter</h1>
+    <p>Images that tell you how often they've been requested</p>
+    <p>
+      Construct an image URL using the options below, then add an
+      <code>&lt;img&gt;</code> tag to your page. The image will contain the
+      number of times it has been requested, allowing you to easily add a
+      hit-counter to any page that supports embedding images.
+    </p>
+    <p>
+      Especially useful for Markdown-based pages like GitHub profiles/readmes.
+    </p>
+    <h2>Example</h2>
+
+    <ol>
+      <li>
+        Create a URL with whatever path you'd like:
+        <pre>https://127.0.0.1/img/<b>oliverjam-github</b></pre>
+      </li>
+      <li>
+        Customise the image with search params:
+        <pre>https://127.0.0.1/img/oliverjam-github?
+  <b>&bg=papayawhip
+  &fg=palevioletred
+  &template=there were {n} views
+  &w=600
+  &h=100</b></pre>
+      </li>
+      <li>
+        Load the URL on your page in an image tag:
+        <pre>
+&lt;img
+  <b>src="https://127.0.0.1/img/oliverjam-github?bg=papayawhip&fg=palevioletred&template=there were {n} views&w=600&h=100"</b>
+  width="600"
+  height="100"
+/&gt;</pre>
+      </li>
+    </ol>
+    <img
+      src="/img/oliverjam-github?bg=papayawhip&fg=palevioletred&template=there were {n} views&w=600&h=100"
+      width="600"
+      height="100"
+    />
+    <h2>Options</h2>
+    <p>You can control how the image looks with search parameters</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>bg</td>
+          <td>Any SVG color</td>
+          <td>Background colour</td>
+          <td>transparent</td>
+        </tr>
+        <tr>
+          <td>fg</td>
+          <td>Any SVG color</td>
+          <td>Text colour</td>
+          <td>black</td>
+        </tr>
+        <tr>
+          <td>template</td>
+          <td>String containing {n}</td>
+          <td>Image text</td>
+          <td>{n}</td>
+        </tr>
+        <tr>
+          <td>w</td>
+          <td>Number in pixels</td>
+          <td>Image width</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>h</td>
+          <td>Number in pixels</td>
+          <td>Image height</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>size</td>
+          <td>Number in pixels</td>
+          <td>Shortcut for width/height</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>fsize</td>
+          <td>Number in pixels</td>
+          <td>Font size</td>
+          <td>24</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="hits">
+      <img
+        class="counter"
+        src="/img/home?w=130&h=30&fsize=16&template={n} hits"
+        loading="lazy"
+        width="130"
+        height="30"
+      />
+    </div>
+  </body>
+</html>
